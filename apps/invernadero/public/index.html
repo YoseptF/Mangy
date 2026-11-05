@@ -11,7 +11,8 @@
     :root { color-scheme: light; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; color: #293d31; background: #e7e8db; }
     * { box-sizing: border-box; }
     body { margin: 0; min-height: 100vh; min-height: 100svh; }
-    .page { min-height: 100vh; min-height: 100svh; display: flex; flex-direction: column; padding: 30px 5vw 24px; }
+    .page { position: relative; isolation: isolate; min-height: 100vh; min-height: 100svh; display: flex; flex-direction: column; padding: 30px 5vw 24px; }
+    .page::before { content: ""; position: absolute; inset: 0; z-index: -1; background: url('/logo-fondo.jpg') center / contain no-repeat; filter: grayscale(1) invert(1) contrast(2); mix-blend-mode: multiply; opacity: .12; pointer-events: none; }
     header, footer { display: flex; align-items: center; justify-content: space-between; gap: 20px; font-size: 11px; letter-spacing: .12em; text-transform: uppercase; }
     .brand { font-weight: 700; letter-spacing: .08em; font-size: 14px; }
     .mark { display: inline-block; width: 9px; height: 9px; margin-right: 9px; border-radius: 50%; background: #a5b66c; }
