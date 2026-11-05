@@ -3,6 +3,8 @@
 ## Web apps
 
 - Prefer single-page applications (SPAs) for web apps.
+- Make changes on a branch and open a pull request for review. Publish only when asked, by merging the pull request after its checks pass.
+- Keep each app's Cloudflare build connection and watch paths scoped to that app and its shared dependencies so unrelated apps are not deployed.
 
 ## Commits
 
