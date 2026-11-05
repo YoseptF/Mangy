@@ -34,10 +34,10 @@ The example serves static files from `public/` using [Workers static assets](htt
 For the Worker build connection, use the following settings:
 
 - Production branch: `main`.
-- Root directory: `/` (the repository root, so npm workspaces and the lockfile are available).
-- Build command: `npm ci`.
-- Deploy command: `npm run deploy --workspace @mangy/invernadero`.
-- Preview command: `npm run preview --workspace @mangy/invernadero`.
+- Root directory: `apps/invernadero` (where this Worker's configuration lives).
+- Build command: `npm ci --prefix ../..` (installs the root workspace lockfile).
+- Deploy command: `npx wrangler deploy`.
+- Preview command: `npx wrangler preview`.
 - Enable preview builds for non-production branches.
 - Include build watch paths: `apps/invernadero/**`, `package.json`, and `package-lock.json` (paths are relative to the repository root). Shared dependency changes can affect this app, so they must trigger a build too.
 
