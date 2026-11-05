@@ -39,7 +39,7 @@ For the Worker build connection, use the following settings:
 - Deploy command: `npx wrangler deploy`.
 - Preview command: `npx wrangler preview`.
 - Enable preview builds for non-production branches.
-- Include build watch paths: `apps/invernadero/**`, `package.json`, and `package-lock.json` (paths are relative to the repository root). Shared dependency changes can affect this app, so they must trigger a build too.
+- Include build watch paths: `apps/invernadero/*`, `package.json`, and `package-lock.json` (paths are relative to the repository root). Shared dependency changes can affect this app, so they must trigger a build too.
 
 Each additional app needs its own Worker and Git connection with commands and watch paths for that app and any shared code it uses. Keep shared paths in every affected Worker's watch list. Do not rely on PR labels or branch names to select a site. A PR changing more than one app will build each affected app; merging it deploys each affected app.
 
