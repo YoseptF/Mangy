@@ -1,0 +1,14 @@
+{
+  "$schema": "../../node_modules/wrangler/config-schema.json",
+  "name": "invernadero-studio",
+  "compatibility_date": "2026-11-05",
+  "preview_urls": true,
+  "assets": {
+    "directory": "./public",
+    "not_found_handling": "single-page-application"
+  },
+  "routes": [
+    { "pattern": "invernadero.studio", "custom_domain": true }
+  ],
+  "previews": {}
+}

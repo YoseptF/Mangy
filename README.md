@@ -26,3 +26,21 @@ Deployment creates or updates the Worker named in that app's `wrangler.jsonc` in
 4. Run `npm install` at the repository root to update the lockfile. Use `npm run dev --workspace @mangy/my-app` and `npm run deploy --workspace @mangy/my-app` for that app.
 
 The example serves static files from `public/` using [Workers static assets](https://developers.cloudflare.com/workers/static-assets/). Apps can add Worker code, bindings, frameworks, or their own dependencies as needed. Keep local credentials and secrets in `.dev.vars` or `.env` files, which are ignored by Git; use Wrangler secrets for deployed values.
+
+## Invernadero Studio publishing
+
+`apps/invernadero` is a separate Worker, `invernadero-studio`. Cloudflare Workers Builds connects it to this repository: non-production branches receive a Preview, and changes merged into `main` deploy to `invernadero.studio`. Previews are public URLs; do not put confidential content in them. Do not merge a site PR until its owner asks to publish.
+
+For the Worker build connection, use the following settings:
+
+- Production branch: `main`.
+- Root directory: `apps/invernadero` (where this Worker's configuration lives).
+- Build command: `npm ci --prefix ../..` (installs the root workspace lockfile).
+- Deploy command: `npx wrangler deploy`.
+- Preview command: `npx wrangler preview`.
+- Enable preview builds for non-production branches.
+- Include build watch paths: `apps/invernadero/*`, `package.json`, and `package-lock.json` (paths are relative to the repository root). Shared dependency changes can affect this app, so they must trigger a build too.
+
+Each additional app needs its own Worker and Git connection with commands and watch paths for that app and any shared code it uses. Keep shared paths in every affected Worker's watch list. Do not rely on PR labels or branch names to select a site. A PR changing more than one app will build each affected app; merging it deploys each affected app.
+
+The production domain is declared in `apps/invernadero/wrangler.jsonc` and is attached on production deployment. Cloudflare's `workers.dev` Preview URLs must be enabled on the Worker before previews have a URL. See [Workers Builds](https://developers.cloudflare.com/workers/ci-cd/builds/) and [Preview URLs](https://developers.cloudflare.com/workers/previews/custom-domains/).
