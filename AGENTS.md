@@ -1,5 +1,9 @@
 # Project instructions
 
+## Web apps
+
+- Prefer single-page applications (SPAs) for web apps.
+
 ## Commits
 
 - Commit often, in small, useful increments.
