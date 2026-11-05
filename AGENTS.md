@@ -1,5 +1,10 @@
 # Project instructions
 
+## Private company files
+
+- When the owner's wife provides company data or files, keep working copies in the repository-root `tmp/` directory, creating it if needed. Preserve these files across tasks and do not delete them unless the owner asks.
+- Treat `tmp/` as private: keep it Git-ignored, never force-add its contents, and do not upload, publish, or include them in deployments. Share the data externally only when explicitly requested by the owner.
+
 ## Web apps
 
 - Prefer single-page applications (SPAs) for web apps.
