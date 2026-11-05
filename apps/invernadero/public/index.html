@@ -11,7 +11,8 @@
     :root { color-scheme: light; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; color: #293d31; background: #e7e8db; }
     * { box-sizing: border-box; }
     body { margin: 0; min-height: 100vh; min-height: 100svh; }
-    .page { min-height: 100vh; min-height: 100svh; display: flex; flex-direction: column; padding: 30px 5vw 24px; }
+    .page { position: relative; isolation: isolate; overflow: hidden; min-height: 100vh; min-height: 100svh; display: flex; flex-direction: column; padding: 30px 5vw 24px; }
+    .watermark { position: absolute; z-index: -1; height: 140%; width: auto; left: -18vw; top: 50%; transform: translateY(-50%); opacity: .07; pointer-events: none; }
     header, footer { display: flex; align-items: center; justify-content: space-between; gap: 20px; font-size: 11px; letter-spacing: .12em; text-transform: uppercase; }
     .brand { font-weight: 700; letter-spacing: .08em; font-size: 14px; }
     .mark { display: inline-block; width: 9px; height: 9px; margin-right: 9px; border-radius: 50%; background: #a5b66c; }
@@ -25,11 +26,12 @@
     .status { display: inline-flex; align-items: center; gap: 9px; margin-top: 40px; padding: 12px 17px; border: 1px solid #acb9a0; border-radius: 999px; font-size: 10px; letter-spacing: .14em; text-transform: uppercase; }
     .status::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: #819b60; }
     footer { border-top: 1px solid #c3cbb8; padding-top: 18px; color: #69776a; }
-    @media (max-width: 600px) { .page { padding: 24px 6vw 20px; } header, footer { font-size: 9px; } .brand { font-size: 12px; } h1 { font-size: clamp(3.5rem, 14vw, 5.5rem); } .plant { width: .38em; height: .52em; left: auto; right: 0; bottom: calc(100% + .12em); } .description { margin-top: 30px; } }
+    @media (max-width: 600px) { .page { padding: 24px 6vw 20px; } .watermark { height: 105%; left: 25%; transform: translate(-25%, -50%); } header, footer { font-size: 9px; } .brand { font-size: 12px; } h1 { font-size: clamp(3.5rem, 14vw, 5.5rem); } .plant { width: .38em; height: .52em; left: auto; right: 0; bottom: calc(100% + .12em); } .description { margin-top: 30px; } }
   </style>
 </head>
 <body>
   <div class="page">
+    <svg class="watermark" viewBox="0 0 1600 1600" aria-hidden="true" focusable="false"><defs><filter id="logo-contrast" color-interpolation-filters="sRGB"><feColorMatrix type="matrix" values="4 0 0 0 -2  0 4 0 0 -2  0 0 4 0 -2  0 0 0 1 0"/></filter><mask id="logo-mask" mask-type="luminance"><image href="/logo-fondo.jpg" width="1600" height="1600" filter="url(#logo-contrast)"/></mask></defs><rect width="1600" height="1600" fill="#293d31" mask="url(#logo-mask)"/></svg>
     <header><span class="brand"><span class="mark" aria-hidden="true"></span>INVERNADERO STUDIO</span><span>Un espacio para crecer</span></header>
     <main>
       <div class="content">
