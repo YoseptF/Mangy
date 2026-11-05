@@ -19,12 +19,13 @@
     .content { max-width: 1000px; }
     .eyebrow { font-size: 11px; letter-spacing: .2em; text-transform: uppercase; margin: 0 0 28px; }
     h1 { margin: 0; font-family: Georgia, "Times New Roman", serif; font-weight: 400; font-size: clamp(4.1rem, 10vw, 9.5rem); letter-spacing: -.075em; line-height: .87; }
-    h1 em { font-weight: 400; color: #758b5c; }
+    h1 em { position: relative; display: inline-block; font-weight: 400; color: #758b5c; }
+    .plant { position: absolute; width: .46em; height: .64em; left: calc(100% + .06em); bottom: .02em; overflow: visible; color: #758b5c; }
     .description { max-width: 390px; margin: 40px auto 0; font-size: 15px; line-height: 1.7; color: #536455; }
     .status { display: inline-flex; align-items: center; gap: 9px; margin-top: 40px; padding: 12px 17px; border: 1px solid #acb9a0; border-radius: 999px; font-size: 10px; letter-spacing: .14em; text-transform: uppercase; }
     .status::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: #819b60; }
     footer { border-top: 1px solid #c3cbb8; padding-top: 18px; color: #69776a; }
-    @media (max-width: 600px) { .page { padding: 24px 6vw 20px; } header, footer { font-size: 9px; } .brand { font-size: 12px; } h1 { font-size: clamp(3.5rem, 14vw, 5.5rem); } .description { margin-top: 30px; } }
+    @media (max-width: 600px) { .page { padding: 24px 6vw 20px; } header, footer { font-size: 9px; } .brand { font-size: 12px; } h1 { font-size: clamp(3.5rem, 14vw, 5.5rem); } .plant { width: .38em; height: .52em; left: auto; right: 0; bottom: calc(100% + .12em); } .description { margin-top: 30px; } }
   </style>
 </head>
 <body>
@@ -33,7 +34,7 @@
     <main>
       <div class="content">
         <p class="eyebrow">Ideas que echan raíces</p>
-        <h1>Algo bueno<br><em>está creciendo.</em></h1>
+        <h1>Algo bueno<br><em>está creciendo.<svg class="plant" viewBox="0 0 60 84" fill="none" aria-hidden="true" focusable="false"><path d="M29 79C30 60 29 39 30 14M30 59C24 52 19 47 12 44M30 46C35 39 40 34 48 30M30 33C24 27 21 22 20 16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M12 44C5 42 2 36 4 30C12 30 18 36 19 47M48 30C54 25 55 18 52 13C45 15 40 21 40 34M20 16C16 12 16 6 19 2C25 5 29 11 28 18" fill="currentColor" opacity=".75"/><path d="M18 79H41" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></em></h1>
         <p class="description">Estamos preparando un nuevo espacio para cultivar ideas y darles vida. Pronto te contaremos más.</p>
         <span class="status">Próximamente</span>
       </div>
