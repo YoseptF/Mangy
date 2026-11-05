@@ -1,0 +1,8 @@
+{
+  "name": "mangy",
+  "private": true,
+  "workspaces": ["apps/*"],
+  "devDependencies": {
+    "wrangler": "^4.158.0"
+  }
+}
