@@ -34,3 +34,28 @@ function updateHeroRoots() {
 window.addEventListener('scroll', updateHeroRoots, { passive: true });
 reduceMotion.addEventListener('change', updateHeroRoots);
 updateHeroRoots();
+
+const methodTrack = document.querySelector('.steps');
+const methodCards = [...methodTrack.querySelectorAll('article')];
+const methodCount = document.querySelector('.method-count');
+function currentStep() {
+  return methodCards.reduce((best, card, index) => Math.abs(card.offsetLeft - methodTrack.scrollLeft) < Math.abs(methodCards[best].offsetLeft - methodTrack.scrollLeft) ? index : best, 0);
+}
+function showStep(index) {
+  const card = methodCards[Math.max(0, Math.min(methodCards.length - 1, index))];
+  methodTrack.scrollTo({ left: card.offsetLeft, behavior: reduceMotion.matches ? 'instant' : 'smooth' });
+}
+document.querySelector('.method-prev').addEventListener('click', () => showStep(currentStep() - 1));
+document.querySelector('.method-next').addEventListener('click', () => showStep(currentStep() + 1));
+methodTrack.addEventListener('scroll', () => { methodCount.textContent = `${String(currentStep() + 1).padStart(2, '0')} / 04`; }, { passive: true });
+
+if ('IntersectionObserver' in window && !reduceMotion.matches) {
+  const reveal = new IntersectionObserver((entries, observer) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      entry.target.animate([{ opacity: .25, transform: 'translateY(34px)' }, { opacity: 1, transform: 'translateY(0)' }], { duration: 850, easing: 'cubic-bezier(.2,.7,.2,1)' });
+      observer.unobserve(entry.target);
+    });
+  }, { threshold: .12 });
+  document.querySelectorAll('.section-intro, .services article, .audience-grid article, .about-content, .contact > div, #contact-form').forEach((element) => reveal.observe(element));
+}
